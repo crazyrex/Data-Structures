@@ -11,7 +11,7 @@ def digitToVal(digitStr):
 	elif digit>=ord('A') and digit<=ord('Z'):
 		return digit-ord('A')+10
 	else:
-		return 0
+		return '0'
 
 def valToDigit(val):
 	if val>=0 and val<=9:
