@@ -8,13 +8,18 @@ def factorial(n):
     otherwise raises ValueError for n < 0 or non-integer n"""
     # implement factorial_iterative and factorial_recursive below, then
     # change this to call your implementation to verify it passes all tests
-    # return factorial_iterative(n)
-    return factorial_recursive(n)
+    return factorial_iterative(n)
+    # return factorial_recursive(n)
 
 
 def factorial_iterative(n):
-    # TODO: implement the factorial function iteratively here
-    pass
+    if n < 0 or not isinstance(n, int):
+        raise ValueError('factorial is undefined for n = {}'.format(n))
+    out=1
+    while (n>1):
+    	out*=n
+    	n-=1
+    return out
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests below
 
