@@ -14,14 +14,21 @@ def is_palindrome(text):
 
 
 def is_palindrome_iterative(text):
+	left=0
+	right=len(text)-1
+	while left<right:
+		lc=ord(text[left])
+		if lc>=ord('A') and lc<=ord('Z'):
+			lc
+	
 	for i in range(0, len(text)//2):
-		if text[i]!=text[len(text)-i-1]:
+		if text[i]!=text[-i-1]:
 			return False
 	return True
 
 def is_palindrome_recursive(text, i=0):
 	if i>=len(text)//2: return True
-	elif text[i]!=text[len(text)-i-1]: return False
+	elif text[i]!=text[-i-1]: return False
 	else: return is_palindrome_recursive(text, i+1)
 
 def main():

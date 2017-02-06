@@ -4,7 +4,7 @@ class Stack(object):
 
     def __init__(self, iterable=None):
         """Initialize this stack and push the given items, if any"""
-        # TODO: initialize instance variables
+        self
         pass
         if iterable:
             for item in iterable:
