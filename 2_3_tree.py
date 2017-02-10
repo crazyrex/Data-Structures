@@ -23,9 +23,58 @@ class Node23:
 		self.midSub = None
 		self.rightSub = None
 	
+	def __init__(self, leftIn, val, rightIn):
+		self.a = val
+		self.b = None
+		self.leftSub = leftIn
+		self.midSub = None
+		self.rightSub = rightIn
+	
 	def insert(self, item):
-		
-		pass
+		if self.leftSub == None:
+			if self.b == None:
+				if item < self.a:
+					self.b = self.a
+					self.a = item
+				else:
+					self.b = item
+			else:
+				if item < self.a:
+					return Node23(Node23(item), self.a, Node23(self.b))
+				elif item < self.b:
+					return Node23(Node23(self.a), item, Node23(self.b))
+				else:
+					return Node23(Node23(self.a), self.b, Node23(item))
+		else:
+			if item < self.a:
+				new = self.leftSub.insert(item)
+				if new != None:
+					if self.b == None:
+						self.b = self.a
+						self.a = new.val
+						self.leftSub = new.leftSub
+						self.midSum = new.rightSub
+					else:
+						return Node23(new, self.a, Node23(self.midSub, self.b, self.rightSub))
+			else:
+				if self.b == None:
+					new = self.rightSub.insert(item)
+					if new != None:
+						self.b = new.val
+						self.midSub = new.leftSub
+						self.rightSub = new.rightSub
+				else:
+					if item < self.b:
+						new = self.midSub.insert(item)
+						return Node23(
+							Node23(self.leftSub, self.a, new.leftSub),
+							new.val,
+							Node23(new.leftSub, self.b, self.rightSub)
+						)
+					else:
+						new = self.rightSub.insert(item)
+						return Node23(Node23(self.leftSub, self.a, self.rightSub), self.b, new)
+
 	
 	def searchFor(self, item):
 		if self.a == item:
