@@ -33,5 +33,9 @@ def sort_level(array, left, right):
 		return merge(array0, array1)
 
 def sort(array):
+	"""
+	merge sort the array and return the result
+	time complexity: O(n*log(n))
+	"""
 	return sort_level(array, 0, len(array))
 	
