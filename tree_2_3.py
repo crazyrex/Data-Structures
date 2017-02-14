@@ -5,7 +5,7 @@ class Tree23:
 
 	def insert(self, item):
 		if self.root == None:
-			self.root = Node23(item)
+			self.root = Node23(None, item, None)
 		else:
 			new = self.root.insert(item)
 			if new != None:
@@ -16,15 +16,17 @@ class Tree23:
 			return False
 		else:
 			return self.root.searchFor(item)
+	
+	def getList(self):
+		if self.root == None:
+			return []
+		else:
+			out = []
+			return self.root.addContentsToList(out)
+			return out
 
 class Node23:
-	def __init__(self, val):
-		self.a = val
-		self.b = None
-		self.leftSub = None
-		self.midSub = None
-		self.rightSub = None
-
+	
 	def __init__(self, leftIn, val, rightIn):
 		self.a = val
 		self.b = None
@@ -42,11 +44,11 @@ class Node23:
 					self.b = item
 			else:
 				if item < self.a:
-					return Node23(Node23(item), self.a, Node23(self.b))
+					return Node23(Node23(None, item, None), self.a, Node23(None, self.b, None))
 				elif item < self.b:
-					return Node23(Node23(self.a), item, Node23(self.b))
+					return Node23(Node23(None, self.a, None), item, Node23(None, self.b, None))
 				else:
-					return Node23(Node23(self.a), self.b, Node23(item))
+					return Node23(Node23(None, self.a, None), self.b, Node23(None, item, None))
 		else: # If this node is not a leaf
 			if item < self.a:
 				new = self.leftSub.insert(item)
@@ -96,3 +98,24 @@ class Node23:
 				return False
 			else:
 				return self.midSub.searchFor(item)
+	
+	def addContentsToList(self, out):
+		if self.leftSub != None:
+			self.leftSub.addContentsToList(out)
+		
+		out.append(self.a)
+		
+		if self.b != None:
+			if self.midSub != None:
+				self.midSub.addContentsToList(out)
+			
+			out.append(self.b)
+		
+		if self.rightSub != None:
+			self.rightSub.addContentsToList(out)
+
+
+
+
+
+
