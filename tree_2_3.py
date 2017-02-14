@@ -16,14 +16,6 @@ class Tree23:
 			return False
 		else:
 			return self.root.searchFor(item)
-	
-	def getList(self):
-		if self.root == None:
-			return []
-		else:
-			out = []
-			return self.root.addContentsToList(out)
-			return out
 
 class Node23:
 	def __init__(self, val):
@@ -104,24 +96,3 @@ class Node23:
 				return False
 			else:
 				return self.midSub.searchFor(item)
-	
-	def addContentsToList(self, out):
-		if leftSub != None:
-			leftSub.addContentsToList(out)
-		
-		out.append(a)
-		
-		if b != None:
-			if midSub != None:
-				midSub.addContentsToList(out)
-			
-			out.append(b)
-		
-		if rightSub != None:
-			rightSub.addContentsToList(out)
-
-
-
-
-
-
