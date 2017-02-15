@@ -29,7 +29,7 @@ class Tree23:
 			return []
 		else:
 			out = []
-			return self.root.addContentsToList(out)
+			self.root.addContentsToList(out)
 			return out
 
 class Node23:
@@ -173,12 +173,13 @@ class Node23:
 		if self.leftSub != None:
 			self.leftSub.addContentsToList(out)
 		
-		out.append(self.a)
+		if self.a != None:
+			out.append(self.a)
+		
+		if self.midSub != None:
+				self.midSub.addContentsToList(out)
 		
 		if self.b != None:
-			if self.midSub != None:
-				self.midSub.addContentsToList(out)
-			
 			out.append(self.b)
 		
 		if self.rightSub != None:

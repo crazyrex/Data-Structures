@@ -27,6 +27,7 @@ class TreeTest(unittest.TestCase):
 		tree.insert(8)
 		print()
 		print(tree.getString())
+		print(tree.getList())
 		assert tree.getList() == [2, 4, 5, 7, 8]
 	
 	def X_test_constructed_tree(self):
