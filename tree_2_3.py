@@ -17,6 +17,12 @@ class Tree23:
 		else:
 			return self.root.searchFor(item)
 	
+	def getString(self):
+		if self.root == None:
+			return "[empty]"
+		else:
+			return "\n".join(self.root.getString())+"\n"
+	
 	def getList(self):
 		if self.root == None:
 			return []
@@ -44,11 +50,20 @@ class Node23:
 					self.b = item
 			else:
 				if item < self.a:
-					return Node23(Node23(None, item, None), self.a, Node23(None, self.b, None))
+					return Node23(
+						Node23(None, item, None),
+						self.a,
+						Node23(None, self.b, None))
 				elif item < self.b:
-					return Node23(Node23(None, self.a, None), item, Node23(None, self.b, None))
+					return Node23(
+						Node23(None, self.a, None),
+						item,
+						Node23(None, self.b, None))
 				else:
-					return Node23(Node23(None, self.a, None), self.b, Node23(None, item, None))
+					return Node23(
+						Node23(None, self.a, None),
+						self.b,
+						Node23(None, item, None))
 		else: # If this node is not a leaf
 			if item < self.a:
 				new = self.leftSub.insert(item)
@@ -59,12 +74,14 @@ class Node23:
 						self.leftSub = new.leftSub
 						self.midSub = new.rightSub
 					else:
-						return Node23(new, self.a, Node23(self.midSub, self.b, self.rightSub))
+						return Node23(new,
+							self.a,
+							Node23(self.midSub, self.b, self.rightSub))
 			else:
 				if self.b == None:
 					new = self.rightSub.insert(item)
 					if new != None:
-						self.b = new.val
+						self.b = new.a
 						self.midSub = new.leftSub
 						self.rightSub = new.rightSub
 				else:
@@ -73,11 +90,13 @@ class Node23:
 						return Node23(
 							Node23(self.leftSub, self.a, new.leftSub),
 							new.val,
-							Node23(new.leftSub, self.b, self.rightSub)
-						)
+							Node23(new.leftSub, self.b, self.rightSub))
 					else:
 						new = self.rightSub.insert(item)
-						return Node23(Node23(self.leftSub, self.a, self.rightSub), self.b, new)
+						return Node23(
+							Node23(self.leftSub, self.a, self.rightSub),
+							self.b,
+							new)
 
 
 	def searchFor(self, item):
@@ -98,6 +117,29 @@ class Node23:
 				return False
 			else:
 				return self.midSub.searchFor(item)
+	
+	def getString(self):
+		subList = ["", ""]
+		if self.leftSub != None:
+			leftList = self.leftSub.getString()
+			for i in range(0, len(leftList)):
+				while i>=len(subList):
+					subList.append("")
+				subList[i] += leftList[i]
+			afterBar = False
+			for i in leftList[0]:
+				if i == "|":
+					afterBar = True
+				if afterBar:
+					subList[1]+="_"
+				else:
+					subList[1]+=" "
+				subList[0]+=" "
+		subList[1]+=str(self.a)
+		subList[0]+="|"
+		
+		return subList
+		
 	
 	def addContentsToList(self, out):
 		if self.leftSub != None:
