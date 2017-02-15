@@ -1,5 +1,6 @@
 from tree_2_3 import Tree23
 from tree_2_3 import Node23
+from random import shuffle
 import unittest
 
 class TreeTest(unittest.TestCase):
@@ -20,15 +21,18 @@ class TreeTest(unittest.TestCase):
 	
 	def test_many_elements(self):
 		tree = Tree23()
-		tree.insert(2)
-		tree.insert(4)
-		tree.insert(7)
-		tree.insert(5)
-		tree.insert(8)
+		data = list(range(0, 64))
+		dataCopy = list(data)
+		shuffle(dataCopy)
+		for i in dataCopy:
+			tree.insert(i)
+			print("inserting "+str(i))
+			print(tree.getString())
 		print()
 		print(tree.getString())
-		print(tree.getList())
-		assert tree.getList() == [2, 4, 5, 7, 8]
+		print("expected: "+str(data))
+		print("got:      "+str(tree.getList()))
+		assert tree.getList() == data
 	
 	def X_test_constructed_tree(self):
 		tree = Tree23()

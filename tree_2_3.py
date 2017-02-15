@@ -65,39 +65,41 @@ class Node23:
 						Node23(None, self.a, None),
 						self.b,
 						Node23(None, item, None))
-		else: # If this node is not a leaf
-			if item < self.a:
+		else: # if this node has children
+			if item < self.a: # if we want to insert the item into the left subtree
 				new = self.leftSub.insert(item)
-				if new != None:
-					if self.b == None:
+				if new != None: # if the operation ejected a node
+					if self.b == None: # if we don't have a 'b' node and can just move 'a' over
 						self.b = self.a
-						self.a = new.val
+						self.a = new.a
 						self.leftSub = new.leftSub
 						self.midSub = new.rightSub
-					else:
+					else: # if we have a 'b', we must eject a new node headed by 'a'
 						return Node23(new,
 							self.a,
 							Node23(self.midSub, self.b, self.rightSub))
-			else:
-				if self.b == None:
+			else: # if item is to the right of 'a'
+				if self.b == None: # if 'b' is none we can just insert item to the right subtree
 					new = self.rightSub.insert(item)
-					if new != None:
+					if new != None: # we don't have to eject anything because we have room
 						self.b = new.a
 						self.midSub = new.leftSub
 						self.rightSub = new.rightSub
-				else:
-					if item < self.b:
+				else: # b has a value so we have a choice between mid and right
+					if item < self.b: # we insert the node in the middle
 						new = self.midSub.insert(item)
-						return Node23(
-							Node23(self.leftSub, self.a, new.leftSub),
-							new.val,
-							Node23(new.leftSub, self.b, self.rightSub))
+						if new != None:
+							return Node23(
+								Node23(self.leftSub, self.a, new.leftSub),
+								new.a,
+								Node23(new.rightSub, self.b, self.rightSub))
 					else:
 						new = self.rightSub.insert(item)
-						return Node23(
-							Node23(self.leftSub, self.a, self.rightSub),
-							self.b,
-							new)
+						if new != None:
+							return Node23(
+								Node23(self.leftSub, self.a, self.midSub),
+								self.b,
+								new)
 
 
 	def searchFor(self, item):
@@ -135,7 +137,7 @@ class Node23:
 		if self.a != None:
 			aStr = str(self.a)
 		if self.b != None:
-			bStr = str(self.b)
+			bStr = "="+str(self.b)
 		
 		out = [""]
 		
@@ -154,7 +156,7 @@ class Node23:
 			while len(out)<=i+1:
 				out.append("#"*len(out[0]))
 			out[i+1] += midGrid[i]
-		out[0] += " "*len(midGrid[0])
+		out[0] += "="*len(midGrid[0])
 		
 		out[0]+=bStr
 		for i in range(0, len(out)):
