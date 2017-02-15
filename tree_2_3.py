@@ -21,7 +21,8 @@ class Tree23:
 		if self.root == None:
 			return "[empty]"
 		else:
-			return "\n".join(self.root.getString())+"\n"
+			grid = self.root.makeDiagram()
+			return "\n".join(grid)+"\n"
 	
 	def getList(self):
 		if self.root == None:
@@ -123,9 +124,9 @@ class Node23:
 		if self.leftSub != None:
 			leftList = self.leftSub.getString()
 			for i in range(0, len(leftList)):
-				while i>=len(subList):
+				while i+2>=len(subList):
 					subList.append("")
-				subList[i] += leftList[i]
+				subList[i+2] += leftList[i]
 			afterBar = False
 			for i in leftList[0]:
 				if i == "|":
@@ -138,8 +139,104 @@ class Node23:
 		subList[1]+=str(self.a)
 		subList[0]+="|"
 		
-		return subList
 		
+		return subList
+	
+		"""
+	def makeDiagram(self, grid, level):
+		lowX=0
+		hghX=0
+		if self.leftSub != None:
+			self.leftSub.makeDiagram(grid, level+2)
+		if level+2<len(grid):
+			lowX = len(grid[level+2])
+				#grid[level] += " "*(len(grid[level+2])-len(grid[level])+1)
+				#grid[level+1] += " "*(len(grid[level+2])-len(grid[level+1]))
+			#while level+1>=len(grid):
+			#	grid.append("")
+			#grid[level] += "|"
+			#grid[level+1] += str(self.a)
+		if self.midSub != None:
+			self.midSub.makeDiagram(grid, level+2)
+		if level+2<len(grid):
+			hghX = len(grid[level+2])
+		if self.rightSub != None:
+			self.rightSub.makeDiagram(grid, level+2)
+		
+		while level>=len(grid):
+			grid.append("")
+		
+		if lowX > 0:
+			grid[level]+=" "*(lowX-len(grid[level]))
+			#grid[level]+=" "*lowX
+			#grid[level]+=
+		
+		grid[level]+=str(self.a)
+		
+		if self.b != None:
+				grid[level] += "--"
+				grid[level] += str(self.b)
+			
+	
+		if self.a != None:
+			if level+2<len(grid):
+				grid[level] += " "*(len(grid[level+2])-len(grid[level]))
+				grid[level+1] += " "*(len(grid[level+2])-len(grid[level+1]))
+			while level+1>=len(grid):
+				grid.append("")
+			grid[level] += "|"
+			grid[level+1] += str(self.a)
+		"""
+	
+	def makeDiagram(self):
+		leftGrid = [""]
+		midGrid = [""]
+		rightGrid = [""]
+		aStr = ""
+		bStr = ""
+		
+		if self.leftSub:
+			leftGrid = self.leftSub.makeDiagram()
+		if self.midSub:
+			midGrid = self.midSub.makeDiagram()
+		if self.rightSub:
+			rightGrid = self.rightSub.makeDiagram()
+		if self.a != None:
+			aStr = str(self.a)
+		if self.b != None:
+			bStr = str(self.b)
+		
+		out = [""]
+		
+		for i in range(0, len(leftGrid)):
+			while len(out)<=i+1:
+				out.append(" "*len(out[0]))
+			out[i+1] += leftGrid[i]
+		
+		out[0] += " "*len(leftGrid[0])
+		
+		out[0]+=aStr
+		for i in range(0, len(out)):
+			out[i]+=" "*(len(out[0])-len(out[i]))
+		
+		for i in range(0, len(midGrid)):
+			while len(out)<=i+1:
+				out.append("#"*len(out[0]))
+			out[i+1] += midGrid[i]
+		out[0] += " "*len(midGrid[0])
+		
+		out[0]+=bStr
+		for i in range(0, len(out)):
+			out[i]+=" "*(len(out[0])-len(out[i]))
+		
+		for i in range(0, len(rightGrid)):
+			while len(out)<=i+1:
+				out.append(" "*len(out[0]))
+			out[i+1] += rightGrid[i]
+		
+		out[0] += " "*len(rightGrid[0])
+		
+		return out
 	
 	def addContentsToList(self, out):
 		if self.leftSub != None:
