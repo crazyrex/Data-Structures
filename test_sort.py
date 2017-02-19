@@ -1,4 +1,4 @@
-from tree_sort import sort
+from quick_sort import sort
 import unittest
 
 class SortTest(unittest.TestCase):
