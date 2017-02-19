@@ -3,7 +3,7 @@ def partition(array, left, right):
 	pivot = array[right-1]
 	j=left
 	for i in range(left, right-1):
-		if array[i]<pivot:
+		if array[i]<=pivot:
 			tmp=array[i]
 			array[i]=array[j]
 			array[j]=tmp
