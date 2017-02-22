@@ -1,5 +1,5 @@
 #from quick_sort import sort
-from merge_sort import sort
+from heap_sort import sort
 import unittest
 
 class SortTest(unittest.TestCase):
