@@ -79,12 +79,12 @@ class MinHeap(object):
         if not (0 <= index <= self._last_index()):
             raise IndexError('Invalid index: {}'.format(index))
         item = self.items[index]
-        # TODO: Swap this item with parent item if values are out of order
         parent_index = self._parent_index(index)
         parent_item = self.items[parent_index]
-        # ...
-        # TODO: Then bubble up again if necessary
-        # ...
+        if item < parent_item:
+        	self.items[parent_index] = item
+        	self.items[index] = parent_item
+        	self._bubble_up(parent_index)
 
     def _bubble_down(self, index):
         """Ensure the heap-ordering property is true below the given index,
@@ -96,14 +96,23 @@ class MinHeap(object):
         if left_index > self._last_index():
             return  # This index is a leaf node (does not have any children)
         item = self.items[index]
-        # TODO: Determine which child item to compare this node's item to
-        child_index = 0
-        # ...
-        # TODO: Swap this item with a child item if values are out of order
-        child_item = self.items[child_index]
-        # ...
-        # TODO: Then bubble down again if necessary
-        # ...
+        left_child_index = self._left_child_index(index)
+        right_child_index = self._right_child_index(index)
+        if left_child_index < len(self.items):
+        	min_child_index = None
+        	if right_child_index < len(self.items):
+        		left_child_item = self.items[left_child_index]
+        		right_child_item = self.items[right_child_index]
+        		min_child_index = left_child_index if left_child_item < right_child_item else right_child_index
+        	else:
+        		min_child_index = left_child_index
+        	
+        	min_child_item = self.items[min_child_index]
+        	if item > min_child_item:
+        		self.items[index] = min_child_item
+        		self.items[min_child_index] = item
+        		self._bubble_down(min_child_index)
+        
 
     def _last_index(self):
         """Return the last valid index in the underlying array of items"""
