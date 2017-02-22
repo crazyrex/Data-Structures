@@ -10,7 +10,7 @@ class PriorityQueue:
 	
 	def dequeue(self):
 		try:
-			self.heap.pop()[1]
+			return self.heap.pop()[1]
 		except:
 			return None
 
