@@ -4,18 +4,16 @@ class Node:
 		self.edges = []
 		self.val = val
 
-class Edge:
-	def __init__(self, a, b, val):
-		self.a = a
-		self.b = b
-		self.val = val
-
 class Graph:
 		
 	def __init__(self):
 		self.nodes = []
-		self.edges = []
 	
-	def addNode(self, val):
-		self.nodes.append(Node(val))
-
+	def addNode(self, node):
+		self.nodes.append(node)
+	
+	def nodesToString(self):
+		out = ""
+		for i in self.nodes:
+			out += str(i.val) + "\n"
+		return out
