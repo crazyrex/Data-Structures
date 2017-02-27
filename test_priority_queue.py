@@ -37,6 +37,19 @@ class PriorityQueueTest(unittest.TestCase):
 		assert queue.dequeue() == 'b'
 		assert queue.dequeue() == 'c'
 		assert queue.dequeue() == 'd'
+	
+	def test_with_same_priority(self):
+		queue = PriorityQueue()
+		
+		queue.enqueue(0, 'd')
+		queue.enqueue(0, 'c')
+		queue.enqueue(0, 'a')
+		queue.enqueue(0, 'b')
+		
+		assert queue.dequeue() == 'd'
+		assert queue.dequeue() == 'c'
+		assert queue.dequeue() == 'a'
+		assert queue.dequeue() == 'b'
 
 if __name__ == '__main__':
     unittest.main()
