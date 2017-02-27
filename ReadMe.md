@@ -305,6 +305,76 @@
 [priority queue sorting]: https://en.wikipedia.org/wiki/Priority_queue#Equivalence_of_priority_queues_and_sorting_algorithms
 
 
+### Class 13: Wednesday, February 22 – Graphs
+
+**Topics:**
+- [graph abstract data type][graph adt]
+- [graph types]: [directed]/undirected, weighted/unweighted, simple/[multigraph]
+- [graph applications]: computer networking, social networking, airplane flight routing, map routing, search engines ([PageRank]), dependency planning, etc.
+- [graph representations]: object references, edge list, [incidence matrix], [adjacency matrix], [adjacency list], adjacency map
+
+**Resources:**
+- play with interactive visualizations: [graph types and representations][visualgo graph]
+
+**Project:**
+- collect data set of social network, airplane routes, or your choice
+- implement graph with appropriate representation for that data set
+
+[graph adt]: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
+[graph types]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Types_of_graphs
+[directed]: https://en.wikipedia.org/wiki/Directed_graph
+[multigraph]: https://en.wikipedia.org/wiki/Multigraph
+[graph applications]: https://en.wikipedia.org/wiki/Graph_theory#Applications
+[PageRank]: https://en.wikipedia.org/wiki/PageRank
+[graph representations]: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)#Representations
+[incidence matrix]: https://en.wikipedia.org/wiki/Incidence_matrix
+[adjacency matrix]: https://en.wikipedia.org/wiki/Adjacency_matrix
+[adjacency list]: https://en.wikipedia.org/wiki/Adjacency_list
+[graph traversals]: https://en.wikipedia.org/wiki/Graph_traversal
+[depth-first search]: https://en.wikipedia.org/wiki/Depth-first_search
+[breadth-first search]: https://en.wikipedia.org/wiki/Breadth-first_search
+
+[visualgo graph]: https://visualgo.net/graphds
+
+
+### Class 14: Friday, February 24 – Graph Traversals & Spanning Trees
+
+**Topics:**
+- [graph traversals]: [depth-first search], [breadth-first search]
+- graph [connectivity], [connected components], [strongly connected components]
+- graph [spanning trees], [minimum spanning trees]: [Prim's algorithm], [Kruskal's algorithm]
+- bonus data structure: [trie (prefix/radix tree)][trie]
+
+**Resources:**
+- play with interactive visualizations: [graph traversals][visualgo traversals], [minimum spanning tree][visualgo mst]
+
+**Graph Project:**
+- implement graph traversals: depth-first search, breadth-first search
+- implement an algorithm to find connected components on your graph data set
+- implement an algorithm to find a minimum spanning tree on your graph data set
+- annotate functions with complexity analysis
+
+**Trie Project:**
+- implement trie with insert and prefix search operations
+- revisit [phone call routing] scenarios 3, 4, and 5 with trie
+- annotate functions with complexity analysis
+
+[connectivity]: https://en.wikipedia.org/wiki/Connectivity_(graph_theory)
+[connected components]: https://en.wikipedia.org/wiki/Connected_component_(graph_theory)
+[strongly connected components]: https://en.wikipedia.org/wiki/Strongly_connected_component
+[disjoint-set]: https://en.wikipedia.org/wiki/Disjoint-set_data_structure
+[spanning trees]: https://en.wikipedia.org/wiki/Spanning_tree
+[minimum spanning trees]: https://en.wikipedia.org/wiki/Minimum_spanning_tree
+[Prim's algorithm]: https://en.wikipedia.org/wiki/Prim%27s_algorithm
+[Kruskal's algorithm]: https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+
+[visualgo traversals]: https://visualgo.net/dfsbfs
+[visualgo mst]: https://visualgo.net/mst
+
+[trie]: https://en.wikipedia.org/wiki/Trie
+[phone call routing]: http://make.sc/db-phone-call-routing
+
+
 ## Working with this GitHub repository
 
 This repository (located at `https://github.com/MakeSchool-18/Data-Structures`) is the course's _origin_ repository which will contain course materials including links, slides, and challenges.
