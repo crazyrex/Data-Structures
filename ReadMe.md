@@ -342,7 +342,9 @@
 **Topics:**
 - [graph traversals]: [depth-first search], [breadth-first search]
 - graph [connectivity], [connected components], [strongly connected components]
-- graph [spanning trees], [minimum spanning trees]: [Prim's algorithm], [Kruskal's algorithm]
+- graph [spanning trees], [minimum spanning trees]:
+    - [Prim's algorithm]
+    - [Kruskal's algorithm]
 - bonus data structure: [trie (prefix/radix tree)][trie]
 
 **Resources:**
@@ -373,6 +375,101 @@
 
 [trie]: https://en.wikipedia.org/wiki/Trie
 [phone call routing]: http://make.sc/db-phone-call-routing
+
+
+### Class 15: Monday, February 27 – Graph Algorithms
+
+**Topics:**
+- [shortest path problem]:
+    - [A* search algorithm]
+    - [Dijkstra's algorithm]
+    - [Bellman–Ford algorithm]
+    - [Floyd–Warshall algorithm]
+- [maximum flow problem]:
+    - [Ford–Fulkerson algorithm]
+    - [Edmonds–Karp algorithm]
+    - [max-flow min-cut theorem]
+- [matching problem], [assignment problem]
+
+**Resources:**
+- play with interactive visualizations: [shortest path][visualgo shortest path], [max flow][visualgo max flow], [matching][visualgo matching]
+
+**Graph Project:**
+- implement an algorithm to find a shortest path or maximum flow on your graph data set
+- annotate functions with complexity analysis
+
+[shortest path problem]: https://en.wikipedia.org/wiki/Shortest_path_problem
+[A* search algorithm]: https://en.wikipedia.org/wiki/A*_search_algorithm
+[Dijkstra's algorithm]: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+[Bellman–Ford algorithm]: https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+[Floyd–Warshall algorithm]: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+
+[maximum flow problem]: https://en.wikipedia.org/wiki/Maximum_flow_problem
+[Ford–Fulkerson algorithm]: https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm
+[Edmonds–Karp algorithm]: https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
+[max-flow min-cut theorem]: https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem
+[matching problem]: https://en.wikipedia.org/wiki/Matching_(graph_theory)
+[assignment problem]: https://en.wikipedia.org/wiki/Assignment_problem
+
+[visualgo shortest path]: https://visualgo.net/sssp
+[visualgo max flow]: https://visualgo.net/maxflow
+[visualgo matching]: https://visualgo.net/matching
+
+
+### Class 16: Wednesday, March 1 – Optimization & Memoization
+
+**Topics:**
+- [combinatorial optimization], [greedy algorithms]
+- revisit [recursion] with [memoization]
+
+**Challenges:**
+- implement the following with plain recursion and with memoization:
+    - [factorial] function
+    - [fibonacci] function
+    - [change-making problem]
+    - stretch: [permutation] function
+    - stretch: [combination] function
+- annotate functions with complexity analysis
+- benchmark performance of plain recursion and memoized recursion
+- stretch: implement `@memoized` [decorator] to memoize any recursive function
+
+**Resources:**
+- play with interactive visualizations: [recursion and memoization][visualgo recursion]
+- read about [greedy algorithms][wikibooks greedy] on WikiBooks
+
+[combinatorial optimization]: https://en.wikipedia.org/wiki/Combinatorial_optimization
+[greedy algorithms]: https://en.wikipedia.org/wiki/Greedy_algorithm
+[memoization]: https://en.wikipedia.org/wiki/Memoization
+[dynamic programming]: https://en.wikipedia.org/wiki/Dynamic_programming
+[factorial]: https://en.wikipedia.org/wiki/Factorial
+[fibonacci]: https://en.wikipedia.org/wiki/Fibonacci_number
+[permutation]: https://en.wikipedia.org/wiki/Permutation
+[combination]: https://en.wikipedia.org/wiki/Combination
+[change-making problem]: https://en.wikipedia.org/wiki/Change-making_problem
+[decorator]: https://wiki.python.org/moin/PythonDecorators
+
+[wikibooks greedy]: https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms
+[wikibooks dp]: https://en.wikibooks.org/wiki/Algorithms/Dynamic_Programming
+[visualgo recursion]: https://visualgo.net/recursion
+
+
+### Class 17: Friday, March 3 – Dynamic Programming
+
+**Topics:**
+- revisit [recursion] with [dynamic programming]
+
+**Challenges:**
+- implement the following with dynamic programming:
+    - [factorial] function
+    - [fibonacci] function
+    - [change-making problem]
+    - stretch: [permutation] function
+    - stretch: [combination] function
+- annotate functions with complexity analysis
+
+**Resources:**
+- play with interactive visualizations: [recursion and dynamic programming][visualgo recursion]
+- read about [dynamic programming][wikibooks dp] on WikiBooks
 
 
 ## Working with this GitHub repository
