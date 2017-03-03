@@ -3,6 +3,20 @@ class Node:
 	def __init__(self, val):
 		self.edges = []
 		self.val = val
+	
+	def getStr(self):
+		out = str(self.val)
+		
+		if len(self.edges) > 0:
+			out += ": "
+		
+		for i in range(0, len(self.edges)):
+			if i != 0:
+				out += ", "
+			out += str(i.val)
+		
+		out += "\n"
+		return out
 
 class Graph:
 		
@@ -15,5 +29,5 @@ class Graph:
 	def nodesToString(self):
 		out = ""
 		for i in self.nodes:
-			out += str(i.val) + "\n"
+			out += i.getStr()
 		return out
